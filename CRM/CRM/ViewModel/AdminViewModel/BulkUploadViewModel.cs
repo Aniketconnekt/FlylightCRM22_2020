@@ -2,6 +2,7 @@
 using CRM.Common.Command;
 using CRM.Common.Constants;
 using CRM.Common.Helpers;
+using CRM.Model;
 using CRM.Model.AdminModel;
 using CRM.View.Admin.Lead;
 using Plugin.FilePicker;
@@ -107,21 +108,33 @@ namespace CRM.ViewModel.AdminViewModel
                     var userId = Settings.CRM_UserId; //await SecureStorage.GetAsync(AppConstant.UserId);
                     var auth = SelectedCampaign.Id + "," + userId;
                     HttpClientHelper apicall = new HttpClientHelper(ApiUrls.LeadBulkUploadUrl, auth);
-                    var response = await apicall.PostAsync<string>(_fileDataBytes, _fileName);
-                    if (response=="Success")
+                    var get_data = await apicall.Post<string>(_fileDataBytes, _fileName);
+                    if(get_data.Contains("Server Down!.Please Try After Some Time."))
                     {
                         HideLoading();
-                        await ShowAlert("Lead uploaded successfully.");
-                        await _navigation.PushAsync(new Leads());
+                        await ShowAlert("Server Down!.Please Try After Some Time.");
                     }
                     else
                     {
-                        HideLoading();
-                        await ShowAlert(response);
+                        if (get_data.Contains("Success"))
+                        {
+                            HideLoading();
+                            await ShowAlert("Lead uploaded successfully.");
+                            await _navigation.PushAsync(new View.Admin.Lead.Leads());
+                        }
+                        else
+                        {
+                            HideLoading();
+                            await ShowAlert("You Can't Add Lead because your Lead limit has exceeded. Please remove some leads from sheet.");
+                        }
+
+                        
                     }
+                    
                 }
                 else
                 {
+
                     HideLoading();
                     await UserDialogs.Instance.AlertAsync(AppConstant.NETWORK_FAILURE, "", "Ok");
                 }

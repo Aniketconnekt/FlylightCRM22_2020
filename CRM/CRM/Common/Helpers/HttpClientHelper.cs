@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CRM.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -52,7 +53,7 @@ namespace CRM.Common.Helpers
             }
         }
 
-        public async Task<bool> Post<T>(byte[] fileDataBytes, string fileName)
+        public async Task<string> Post<T>(byte[] fileDataBytes, string fileName)
         {
             using (var client = new HttpClient())
             {
@@ -67,15 +68,19 @@ namespace CRM.Common.Helpers
                     {
                         formData.Add(new ByteArrayContent(fileDataBytes), "ClientDocs", fileName);
                         var response = await client.PostAsync(endpoint, formData);
-                        if (response.StatusCode == HttpStatusCode.OK) 
-                            return true;
-                        else
-                            return false;
+                        var get_data = response.Content.ReadAsStringAsync().Result;
+                        return get_data;
+                       // var _res = JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
+                        // return _res;
+                        //if (response.StatusCode == HttpStatusCode.OK) 
+                        //    return true;
+                        //else
+                        //    return false;
                     }
                 }
                 catch (Exception ex)
                 {
-                    return false;
+                    throw;
                 }
             }
         }
@@ -98,7 +103,7 @@ namespace CRM.Common.Helpers
                         if (response.StatusCode == HttpStatusCode.OK)
                             return "Success";
                         else
-                            return "UnSuccessfull";
+                            return "You Can't Add Lead because your Lead limit has exceeded. Please remove some leads from sheet.";
                     }
                 }
                 catch (Exception ex)
