@@ -37,6 +37,7 @@ namespace CRM.View.Admin.Lead
                 DisplayAlert("", ex.Message, "Ok");
             }
         }
+
         private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(e.NewTextValue))

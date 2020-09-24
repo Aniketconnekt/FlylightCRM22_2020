@@ -168,7 +168,6 @@
             </Grid.RowDefinitions>
             <!--<Button Text="ADD NEW LEADS" Style="{StaticResource button}" Command="{Binding AddNewLeadsCommand}"
                     VerticalOptions="CenterAndExpand" />-->
-
             <Frame HasShadow="False" CornerRadius="25" Padding="0" Margin="10" BorderColor="#0CB1C7">
                 <SearchBar x:Name="searchBar" Placeholder="Search" CancelButtonColor="#0CB1C7"
                                SearchCommand="{Binding LeadsSearch}" TextChanged="SearchBar_TextChanged"

@@ -8,7 +8,7 @@
               BackgroundColor="#FAFAFA"
              Title="Lead Details"
              x:Class="CRM.View.Admin.Lead.LeadDetails"
-             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:local="clr-namespace:CRM.CustomControls">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:TextToBoolConverter x:Key="TextToBoolConverter" />
@@ -172,6 +172,43 @@
                         </Label>
                     </StackLayout>
                 </StackLayout>
+
+                <Grid BackgroundColor="{StaticResource admin_lightgray_color}" ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Frame HasShadow="False" CornerRadius="25" Padding="5,0,0,0" Margin="5" BorderColor="#0CB1C7">
+                            <local:CustomEntry x:Name="txtName" Style="{StaticResource entry_style}" 
+                                       Placeholder="Search Lead" Text="{Binding LeadName}"/>
+                        </Frame>
+                    </Grid>
+                    <StackLayout Grid.Column="1">
+                        <Frame HasShadow="False" CornerRadius="25" Padding="5,0,10,0" Margin="5" BorderColor="#0CB1C7">
+                            <!--<local:CustomPicker Image="ic_dropdown" Title="Select Status">
+                                <Picker.FontSize>
+                                    <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                                </Picker.FontSize>
+                            </local:CustomPicker>-->
+                            <local:CustomPicker Image="ic_dropdown" Title="Select Status" ItemsSource="{Binding StatusData}" 
+                                                ItemDisplayBinding="{Binding ActionName}" SelectedItem="{Binding Selectedstatus}">
+                            </local:CustomPicker>
+                        </Frame>
+                        
+                        <!--<local:CustomPicker Grid.Row="13" Image="ic_dropdown" Title="Select Status" 
+                                         SelectedItem="{Binding SelectedAction}" 
+                                        ItemDisplayBinding="{Binding ActionName}">
+                            <Picker.FontSize>
+                                <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                            </Picker.FontSize>
+                        </local:CustomPicker>-->
+                    </StackLayout>
+                </Grid>
+                <Button Text="Search" Style="{StaticResource button}" Command="{Binding SearchCommand}"
+                        VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" 
+                        Padding="50,0" Margin="0,10"/>
+                
                 <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource admin_white_color}" Padding="5">
                     <Label Text="Leads Called" Style="{StaticResource header_style}" VerticalOptions="CenterAndExpand" 
                            HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>

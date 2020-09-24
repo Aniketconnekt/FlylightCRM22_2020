@@ -15,5 +15,12 @@ namespace CRM.View.Admin.Lead
             BindingContext = _leadDetailsViewModel = new LeadDetailsViewModel(Navigation);
             _leadDetailsViewModel.Initialize(userID, count);
         }
+
+        //private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    if (string.IsNullOrWhiteSpace(e.NewTextValue))
+        //        await _leadDetailsViewModel.Initialize();
+
+        //}
     }
 }

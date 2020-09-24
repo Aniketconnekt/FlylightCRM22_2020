@@ -186,7 +186,6 @@ namespace CRM.ViewModel.AdminViewModel
                     {
                         foreach (var lead in response.List)
                             list.Add(lead);
-
                         var data = new ObservableCollection<LeadsData>(list.OrderByDescending(o => o.CreationDate));
                         list = data;
                     }
