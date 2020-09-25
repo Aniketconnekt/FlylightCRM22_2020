@@ -12,6 +12,8 @@ namespace CRM.View.LeadAllotted
     public partial class LeadAllottedPage : ContentPage
     {
         LeadAllottedViewModel _leadAllottedViewModel;
+
+
         public LeadAllottedPage(NewCampaignData selectedCampaign)
         {
             NavigationPage.SetBackButtonTitle(this, "");

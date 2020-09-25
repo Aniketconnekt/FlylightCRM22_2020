@@ -30,7 +30,7 @@ namespace CRM.ViewModel
         #region CTOR
         public LeadDetailsViewModel(INavigation navigation) : base(navigation)
         {
-            
+
         }
         #endregion
 
@@ -43,7 +43,7 @@ namespace CRM.ViewModel
         public DelegateCommand TransferLeadsCommand => new DelegateCommand(ExecuteOnTransferLeads);
         public DelegateCommand LoadMoreItemsCommand => new DelegateCommand(ExecuteOnLoadMoreItems);
         public DelegateCommand LoadMorePendingItemsCommand => new DelegateCommand(ExecuteOnLoadMorePendingItems);
-      //  public DelegateCommand SearchCommand => new DelegateCommand(ExecuteOnLeadsSearch);
+        public DelegateCommand SearchCommand => new DelegateCommand(ExecuteSearchCommand);
         #endregion
 
         #region Properties
@@ -74,7 +74,12 @@ namespace CRM.ViewModel
             get => _userName;
             set { _userName = value; OnPropertyChanged(); }
         }
-
+        private int _userid;
+        public int userid
+        {
+            get => _userid;
+            set { _userid = value; OnPropertyChanged(); }
+        }
         private string _leadName;
         public string LeadName
         {
@@ -94,6 +99,8 @@ namespace CRM.ViewModel
             get => _Selectedstatus;
             set { _Selectedstatus = value; OnPropertyChanged(); }
         }
+
+
         private ObservableCollection<LeadDetailsList> _pendinglist;
         public ObservableCollection<LeadDetailsList> Pendinglist
         {
@@ -154,7 +161,7 @@ namespace CRM.ViewModel
         //    LeadsDataList = new List<LeadDetailsData>();
         //}
 
-        
+
         public async void ExecuteOnDay1(object obj)
         {
             Day1Color = Color.FromHex("#2baae1");
@@ -198,6 +205,7 @@ namespace CRM.ViewModel
         }
         public async Task GetLeadsCalledList(int lastrecordsid, int userID, string fromDate, string toDate)
         {
+
             try
             {
                 ShowLoading();
@@ -210,6 +218,7 @@ namespace CRM.ViewModel
                     if (response != null && response.Result && response.Object != null && response.Message.Equals("Success"))
                     {
                         UserName = response.Object.Username;
+                        userid = response.Object.UserId;
                         foreach (var lead in response.Object.CalledList)
                             Calledlist.Add(lead);
 
@@ -242,48 +251,60 @@ namespace CRM.ViewModel
                 await GetLeadsPendingList(Pendinglist.LastOrDefault().Id, _userID, _fromDate, _toDate);
         }
 
-        //public async void GetLeadsSearch(int status, string searchvalue, int userid, int lastrecordsid, string fromDate, string toDate)
-        //{
-        //    var list = new ObservableCollection<LeadDetailsList>();
-        //    int statusId = 0;
-        //    if (Selectedstatus != null)
-        //        statusId = Selectedstatus.Id;
-        //    try
-        //    {
-        //        ShowLoading();
-        //        var current = Connectivity.NetworkAccess;
-        //        if (current == NetworkAccess.Internet)
-        //        {
-        //            var userId = Settings.CRM_UserId; //await SecureStorage.GetAsync(AppConstant.UserId);
-        //            HttpClientHelper apicall = new HttpClientHelper(String.Format(ApiUrls.SearchForPerformance, statusId, userId, searchvalue, fromDate, toDate), string.Empty);
-        //            var response = await apicall.Get<LeadDetailsList>();
-        //            if (response != null && response.Result && response.List != null && response.Message.Equals("Success"))
-        //            {
-        //                foreach (var lead in response.List)
-        //                    list.Add(lead);
-        //                var data = new ObservableCollection<LeadDetailsList>(list.OrderByDescending(o => o.CreationDate));
-        //                list = data;
-        //            }
-        //            else
-        //            {
-        //                HideLoading();
-        //                await ShowAlert("Record Not Found");
-        //            }
-        //        }
-        //        else
-        //        {
-        //            HideLoading();
-        //            await UserDialogs.Instance.AlertAsync(AppConstant.NETWORK_FAILURE, "", "Ok");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        await ShowAlert(ex.Message);
-        //        HideLoading();
-        //    }
-        //    HideLoading();
-        //    return list;
-        //}
+        public async void ExecuteSearchCommand(object obj)
+        {
+            Calledlist.Clear();
+            int statusId = 0;
+            if (Selectedstatus != null)
+                statusId = Selectedstatus.Id;
+            await GetLeadsSearch(statusId, LeadName, userid,  0, _fromDate, _toDate);
+        }
+        public async Task GetLeadsSearch(int status, string searchvalue, int userid, int lastrecordsid, string Fdate, string Tdate)
+        {
+            //var list = new ObservableCollection<LeadDetailsList>();
+            
+            try
+            {
+
+                ShowLoading();
+                var current = Connectivity.NetworkAccess;
+                if (Selectedstatus == null && string.IsNullOrWhiteSpace(LeadName))
+                {
+                    HideLoading();
+                    await ShowAlert("please fill atleast one field.");
+                    return;
+                }
+                else if (current == NetworkAccess.Internet)
+                {
+                    var userId = Settings.CRM_UserId; //await SecureStorage.GetAsync(AppConstant.UserId);
+                    HttpClientHelper apicall = new HttpClientHelper(String.Format(ApiUrls.SearchForPerformance, status,  searchvalue, userid, lastrecordsid, Fdate, Tdate), string.Empty);
+                    var response = await apicall.Get<LeadDetailsModel>();
+                    if (response != null && response.Result && response.Object != null && response.Message.Equals("Success"))
+                    {
+                        foreach (var lead in response.Object.CalledList)
+                            Calledlist.Add(lead);
+                        LeadsCalledCount = Calledlist.Count() + "/" + response.TotalCount;
+                    }
+                    else
+                    {
+                        HideLoading();
+                        await ShowAlert("Record Not Found");
+                    }
+                }
+                else
+                {
+                    HideLoading();
+                    await UserDialogs.Instance.AlertAsync(AppConstant.NETWORK_FAILURE, "", "Ok");
+                }
+            }
+            catch (Exception ex)
+            {
+                await ShowAlert(ex.Message);
+                HideLoading();
+            }
+            HideLoading();
+            //return list;
+        }
 
         public async Task GetLeadsPendingList(int lastrecordsid, int userID, string fromDate, string toDate)
         {

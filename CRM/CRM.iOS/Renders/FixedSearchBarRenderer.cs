@@ -19,7 +19,7 @@ namespace CRM.iOS.Renders
 
             if (UIDevice.CurrentDevice.CheckSystemVersion(13, 0) && Control != null)
             {
-                //Control.SearchTextField.BackgroundColor = UIColor.FromRGB(255, 255, 255);
+                Control.SearchTextField.BackgroundColor = UIColor.FromRGB(255, 255, 255);
 
             }
         }

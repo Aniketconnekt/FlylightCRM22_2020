@@ -44,7 +44,7 @@
         public const string SearchUsersUrl = Baseurl + "SearchUsers?AdminId={0}&SearchValue={1}";
         public const string SearchLeadsForAdminUrl = Baseurl + "SearchLeadsForAdmin?AdminId={0}&Searchval={1}";
 
-        public const string SearchForPerformance = Baseurl + "SearchForPerformance?status{0}&SearchValue={1}&userid={2}&lastrecordsid={3}&Fromdate={4}&Todate={5}";
+        public const string SearchForPerformance = Baseurl + "SearchForPerformance?status={0}&searchvalue={1}&userid={2}&lastrecordsid={3}&Fdate={4}&Tdate={5}";
 
         public const string GetstatusListUrl = Baseurl + "GetstatusList?UserId={0}";
         public const string AddUpdateStatusUrl = Baseurl + "AddUpdateStatus";

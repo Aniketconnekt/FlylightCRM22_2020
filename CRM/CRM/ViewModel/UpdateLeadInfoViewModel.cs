@@ -245,7 +245,7 @@ namespace CRM.ViewModel
                     AddUserLeadModel.Name = Name;
                     AddUserLeadModel.DOB = dob;
                     AddUserLeadModel.MobileNumber = MobileNumber;
-                    AddUserLeadModel.AlternateNumber = AlternateNo;
+                    AddUserLeadModel.AlternateNo = AlternateNo;
                     AddUserLeadModel.Company = Company;
                     AddUserLeadModel.Address = Address;
                     AddUserLeadModel.City = City;
@@ -294,7 +294,7 @@ namespace CRM.ViewModel
                     AddUserLeadModel.Name = Name;
                     AddUserLeadModel.DOB = dob;
                     AddUserLeadModel.MobileNumber = MobileNumber;
-                    AddUserLeadModel.AlternateNumber = AlternateNo;
+                    AddUserLeadModel.AlternateNo = AlternateNo;
                     AddUserLeadModel.Company = Company;
                     AddUserLeadModel.Address = Address;
                     AddUserLeadModel.City = City;

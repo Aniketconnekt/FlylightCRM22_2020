@@ -88,7 +88,7 @@
                 </Setter>
                 <Setter Property="CornerRadius">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "30" Tablet = "28" />
+                        <OnIdiom x:TypeArguments ="x:Int32" Phone = "24" Tablet = "28" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="BackgroundColor" Value="{StaticResource admin_green_color}" />
@@ -179,13 +179,13 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
-                        <Frame HasShadow="False" CornerRadius="25" Padding="5,0,0,0" Margin="5" BorderColor="#0CB1C7">
+                        <Frame HasShadow="False" HeightRequest="40" CornerRadius="22" Padding="5,0,0,0" Margin="5" BorderColor="#0CB1C7">
                             <local:CustomEntry x:Name="txtName" Style="{StaticResource entry_style}" 
                                        Placeholder="Search Lead" Text="{Binding LeadName}"/>
                         </Frame>
                     </Grid>
                     <StackLayout Grid.Column="1">
-                        <Frame HasShadow="False" CornerRadius="25" Padding="5,0,10,0" Margin="5" BorderColor="#0CB1C7">
+                        <Frame HasShadow="False" HeightRequest="40" CornerRadius="22" Padding="5,0,10,0" Margin="5" BorderColor="#0CB1C7">
                             <!--<local:CustomPicker Image="ic_dropdown" Title="Select Status">
                                 <Picker.FontSize>
                                     <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />

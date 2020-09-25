@@ -134,6 +134,9 @@
                             <Label Text="{Binding NewLeadData.CalledLead}" Style="{StaticResource blue_text_style}"/>
                             <Label Grid.Row="1" Text="LEADS CALLED" Style="{StaticResource gray_text_style}"/>
                         </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LeadsCalledCommand}"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <Frame CornerRadius="10" Grid.Row="0" Grid.Column="1" HasShadow="False" Padding="5" >
                         <Grid>
@@ -144,6 +147,9 @@
                             <Label Text="{Binding NewLeadData.PendingLeads}" Style="{StaticResource blue_text_style}"/>
                             <Label Grid.Row="1" Text="LEADS PENDING" Style="{StaticResource gray_text_style}"/>
                         </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LeadsPendingCommand}"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <Frame CornerRadius="10" Grid.Row="1" Grid.Column="0" HasShadow="False" Padding="5" >
                         <Grid>
@@ -154,6 +160,9 @@
                             <Label Text="{Binding NewLeadData.AllottedTotalLead}" Style="{StaticResource blue_text_style}"/>
                             <Label Grid.Row="1" Text="LEADS ALLOTTED" Style="{StaticResource gray_text_style}"/>
                         </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LeadsAllottedCommand}"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <Frame CornerRadius="10" Grid.Row="1" Grid.Column="1" HasShadow="False" Padding="5" >
                         <Frame.GestureRecognizers>

@@ -12,6 +12,8 @@ namespace CRM.View.LeadCalled
     public partial class LeadCalledPage : ContentPage
     {
         LeadCalledViewModel _leadCalledViewModel;
+
+        
         public LeadCalledPage(NewCampaignData selectedCampaign, string type)
         {
             NavigationPage.SetBackButtonTitle(this, "");

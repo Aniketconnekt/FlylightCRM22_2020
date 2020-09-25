@@ -12,7 +12,8 @@ namespace CRM.Model
         public string DOB { get; set; }
         public string Company { get; set; }
         public string MobileNumber { get; set; }
-        public string AlternateNumber { get; set; }
+       // public string AlternateNumber { get; set; }
+        public string AlternateNo { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public int CityId { get => 1; }

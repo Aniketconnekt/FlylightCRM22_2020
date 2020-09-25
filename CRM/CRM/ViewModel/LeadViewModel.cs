@@ -10,6 +10,9 @@ using System.Collections.ObjectModel;
 using CRM.Common.Command;
 using CRM.View.SearchLead;
 using System.Linq;
+using CRM.View.LeadAllotted;
+using CRM.View.LeadCalled;
+using CRM.View.LeadsPending;
 
 namespace CRM.ViewModel
 {
@@ -25,6 +28,9 @@ namespace CRM.ViewModel
         public DelegateCommand SearchLeadCommand => new DelegateCommand(ExecuteOnSearchLead);
         public DelegateCommand FollowupCommand => new DelegateCommand(ExecuteOnFollowup);
         public DelegateCommand LoadMoreItemsCommand => new DelegateCommand(ExecuteOnLoadMoreItems);
+        public DelegateCommand LeadsAllottedCommand => new DelegateCommand(ExecuteOnLeadsAllotted);
+        public DelegateCommand LeadsCalledCommand => new DelegateCommand(ExecuteOnLeadsCalled);
+        public DelegateCommand LeadsPendingCommand => new DelegateCommand(ExecuteOnLeadsPending);
         #endregion
 
         #region Properties
@@ -48,6 +54,13 @@ namespace CRM.ViewModel
             get => _leadCount;
             set { _leadCount = value; OnPropertyChanged(); }
         }
+
+        private NewCampaignData _selectedCampaign ;
+        public NewCampaignData SelectedCampaign
+        {
+            get => _selectedCampaign;
+            set { _selectedCampaign = value; OnPropertyChanged(); }
+        }
         #endregion
 
         #region Methods
@@ -60,6 +73,21 @@ namespace CRM.ViewModel
 
             if (!LeadsData.Any())
                 await ShowAlert("Record Not Found");
+        }
+
+        public async void ExecuteOnLeadsAllotted(object obj)
+        {
+            await _navigation.PushAsync(new LeadAllottedPage(SelectedCampaign));
+        }
+        public async void ExecuteOnLeadsCalled(object obj)
+        {
+
+            await _navigation.PushAsync(new LeadCalledPage(SelectedCampaign, "Called"));
+        }
+        public async void ExecuteOnLeadsPending(object obj)
+        {
+
+            await _navigation.PushAsync(new LeadsPendingPage(SelectedCampaign, "Pending"));
         }
         private async void ExecuteOnLoadMoreItems(object obj)
         {
@@ -75,7 +103,7 @@ namespace CRM.ViewModel
                 if (current == NetworkAccess.Internet)
                 {
                     var userId = Settings.CRM_UserId; //await SecureStorage.GetAsync(AppConstant.UserId);
-                    HttpClientHelper apicall = new HttpClientHelper(String.Format(ApiUrls.GetDashboardDataUrl,userId), string.Empty);
+                    HttpClientHelper apicall = new HttpClientHelper(String.Format(ApiUrls.GetDashboardDataUrl, userId), string.Empty);
                     var response = await apicall.Get<NewLeadModel>();
                     if (response != null && response.Result && response.Object != null && response.Message.Equals("Success"))
                         NewLeadData = response.Object;
