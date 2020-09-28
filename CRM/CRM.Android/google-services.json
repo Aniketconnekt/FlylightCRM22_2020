@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "767518590572",
-    "firebase_url": "https://flylightcrmapp.firebaseio.com",
-    "project_id": "flylightcrmapp",
-    "storage_bucket": "flylightcrmapp.appspot.com"
+    "project_number": "115551599479",
+    "firebase_url": "https://in-connekt-flylight.firebaseio.com",
+    "project_id": "in-connekt-flylight",
+    "storage_bucket": "in-connekt-flylight.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:767518590572:android:04b09ba432043aee0f3a49",
+        "mobilesdk_app_id": "1:115551599479:android:b042bf7c4d7e947811ff72",
         "android_client_info": {
-          "package_name": "com.companyname.flylightcrm"
+          "package_name": "in.connekt.flylight"
         }
       },
       "oauth_client": [
         {
-          "client_id": "767518590572-20rhmbqtkmo051p3bvm7qj1iav9thvad.apps.googleusercontent.com",
+          "client_id": "115551599479-8cvba8ag57qu47m41v8g3m4eqm5bldjp.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBHV0ktq_AaFYemUsWNAdDf95U5-YAMoAk"
+          "current_key": "AIzaSyC154mHMEP5k24pcCs49FmXl6-X5pabz0w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "767518590572-20rhmbqtkmo051p3bvm7qj1iav9thvad.apps.googleusercontent.com",
+              "client_id": "115551599479-8cvba8ag57qu47m41v8g3m4eqm5bldjp.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

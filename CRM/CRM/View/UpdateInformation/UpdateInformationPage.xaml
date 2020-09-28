@@ -118,13 +118,13 @@
                         <RowDefinition Height="45"/>
                     </Grid.RowDefinitions>
 
-                    <Label Text="Lead Name" Style="{StaticResource label_style}"/>
+                    <Label Text="Lead Name*" Style="{StaticResource label_style}"/>
                     <local:CustomEntry Grid.Row="1" Text="{Binding Name}" Placeholder="Enter lead name..." 
                                        Style="{StaticResource entry_style}"
                                        TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>
                     <BoxView Grid.Row="2" Style="{StaticResource boxview_style}"/>
 
-                    <Label Grid.Row="3" Text="Mobile Number :" Style="{StaticResource label_style}"/>
+                    <Label Grid.Row="3" Text="Mobile Number* :" Style="{StaticResource label_style}"/>
                     <local:CustomEntry Grid.Row="4" Text="{Binding MobileNumber}" Placeholder="Enter mobile number..." 
                                        Style="{StaticResource entry_style}" Keyboard="Numeric" 
                                        TextChanged="MobileNumber_TextChanged"/>
@@ -136,7 +136,7 @@
                                        TextChanged="MobileNumber_TextChanged" Grid.Row="7"/>
                     <BoxView Grid.Row="8" x:Name="alternate_mobile_number_separator" Style="{StaticResource boxview_style}"/>
 
-                    <Label Grid.Row="9" Text="Company :" Style="{StaticResource label_style}"/>
+                    <Label Grid.Row="9" Text="Company* :" Style="{StaticResource label_style}"/>
                     <local:CustomEntry Grid.Row="10"  Placeholder="Enter company name..." 
                                        Style="{StaticResource entry_style}" Text="{Binding Company}"
                                        TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>

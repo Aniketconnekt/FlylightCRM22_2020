@@ -89,6 +89,8 @@
     <Compile Include="DI\FileService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="NotificationDelegate.cs" />
+    <Compile Include="NotificationHelper.cs" />
     <Compile Include="Renders\BackButtonPage.cs" />
     <Compile Include="Renders\CustomButtonRenderer.cs" />
     <Compile Include="Renders\CustomEntryRenderer.cs" />

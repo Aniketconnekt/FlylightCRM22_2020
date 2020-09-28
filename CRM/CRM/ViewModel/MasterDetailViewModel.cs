@@ -184,9 +184,19 @@ namespace CRM.ViewModel
                         seperator_color = App.nav_bar_color,
                         roll = "Admin"
                     },
+                    //new MasterDetailModel(_navigation)
+                    //{
+                    //    id=12,
+                    //    icon="ic_menu_inactive_logout.png",
+                    //    title ="Notification",
+                    //    title_text_color="#4C4C4C",
+                    //    seperator_visible = false,
+                    //    seperator_color = App.nav_bar_color,
+                    //    roll = "Admin"
+                    //},
                     new MasterDetailModel(_navigation)
                     {
-                        id=12,
+                        id=13,
                         icon="ic_menu_inactive_logout.png",
                         title ="Logout",
                         title_text_color="#4C4C4C",
@@ -231,7 +241,7 @@ namespace CRM.ViewModel
                     {
                         id=3,
                         icon="ic_menu_inactive_allotted_lead.png",
-                        title ="Allotted Leads",
+                        title ="Lead  Allottment",
                         title_text_color="#4C4C4C",
                         seperator_visible = false,
                         seperator_color = App.nav_bar_color,

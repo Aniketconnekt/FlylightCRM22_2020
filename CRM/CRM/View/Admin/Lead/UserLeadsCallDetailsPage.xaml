@@ -151,42 +151,41 @@
             </ScrollView>-->
 
             <syncfusion:SfListView ItemsSource="{Binding UserLeadsCallDetailsData}" Style="{StaticResource listview_style}"
-                                   SelectionMode="None" AutoFitMode="Height" LoadMoreOption="{Binding LoadMoreOption}"
+                                   SelectionMode="None" HeightRequest="60" LoadMoreOption="{Binding LoadMoreOption}"
                                    LoadMoreCommand="{Binding LoadMoreItemsCommand}"
                                    Grid.Row="3" HorizontalOptions="StartAndExpand" 
                                    BackgroundColor="{StaticResource admin_white_color}">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Margin="20,0" ColumnSpacing="0" RowSpacing="0">
+                            <Grid Margin="20,0" ColumnSpacing="15" RowSpacing="0">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="2"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-
                                 <Label Text="{Binding Name}" Style="{StaticResource lead_name_style}" />
                                 <Label Text="{Binding LeadActionDate}" Style="{StaticResource mobile_number_style}" 
-                                       Grid.Row="1"/>
+                                       Grid.Row="0" Grid.Column="1"/>
                                 <Label Text="{Binding LeadFollowuptime}" 
-                                       Style="{StaticResource mobile_number_style}" Grid.Row="2"
+                                       Style="{StaticResource mobile_number_style}" Grid.Row="0" Grid.Column="2"
                                        IsVisible="{Binding LeadFollowuptime, Converter={StaticResource TextToBoolConverter}}"/>
                                 <Label Text="{Binding Description}" Style="{StaticResource mobile_number_style}"
-                                       Grid.Row="3" Grid.ColumnSpan="2"
+                                       Grid.Row="1" Grid.ColumnSpan="4"
                                        IsVisible="{Binding Description, Converter={StaticResource TextToBoolConverter}}"/>
 
                                 <Label Text="{Binding CurrentStatus}" TextColor="{Binding status_text_color}" 
                                        HorizontalTextAlignment="End" VerticalTextAlignment="Center"
-                                       Style="{StaticResource lead_name_style}" Grid.Column="1" Grid.RowSpan="3"/>
+                                       Style="{StaticResource lead_name_style}" Grid.Column="3" Grid.RowSpan="3"/>
 
-                                <BoxView Color="{StaticResource admin_gray_color}" Grid.Row="4" 
-                                         Grid.ColumnSpan="2"/>
+                                <BoxView Color="{StaticResource admin_gray_color}" Grid.Row="2" 
+                                         Grid.ColumnSpan="4"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

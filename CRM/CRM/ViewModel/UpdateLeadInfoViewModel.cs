@@ -202,32 +202,6 @@ namespace CRM.ViewModel
                 await ShowAlert("Please enter mobile number.");
                 return false;
             }
-            else if (string.IsNullOrWhiteSpace(Address))
-            {
-                await ShowAlert("Please enter address.");
-                return false;
-            }
-            else if (string.IsNullOrWhiteSpace(City))
-            {
-                await ShowAlert("Please enter city.");
-                return false;
-            }
-            else if (string.IsNullOrWhiteSpace(District))
-            {
-                await ShowAlert("Please enter district.");
-                return false;
-            }
-            else if (State == null)
-            {
-                await ShowAlert("Please enter state.");
-                return false;
-            }
-            else if (!string.IsNullOrWhiteSpace(Email) && !Helper.IsEmailValid(Email))
-            {
-                await ShowAlert("Please enter valid email.");
-                return false;
-            }
-
             return true;
         }
         private async Task UpdateLead()
@@ -250,7 +224,14 @@ namespace CRM.ViewModel
                     AddUserLeadModel.Address = Address;
                     AddUserLeadModel.City = City;
                     AddUserLeadModel.District = District;
-                    AddUserLeadModel.State = State.Statename;
+                    if (State != null)
+                    {
+                        AddUserLeadModel.State = State.Statename;
+                    }
+                    else
+                    {
+                        AddUserLeadModel.State = null;
+                    }
                     AddUserLeadModel.Email = Email;
                     AddUserLeadModel.CreatedById = Settings.CRM_UserId; //await SecureStorage.GetAsync(AppConstant.UserId);
                     var json = JsonConvert.SerializeObject(AddUserLeadModel);

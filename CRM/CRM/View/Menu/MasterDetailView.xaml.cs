@@ -137,7 +137,7 @@ namespace CRM.View.Menu
 
                         ResetMenu(item);
                         break;
-                    case "Allotted Leads":
+                    case "Lead  Allottment":
                         item.icon = roleId == "2" ? "ic_menu_allotted_lead.png" : "ic_menu_allotted_lead.png";
                         item.title_text_color = App.menu_selected_text_color;
                         item.seperator_visible = true;
@@ -280,6 +280,16 @@ namespace CRM.View.Menu
                         };
                         ResetMenu(item);
                         break;
+                    //case "Notification":
+                    //    item.icon = "ic_menu_inactive_language.png";
+                    //    item.seperator_visible = true;
+                    //    Application.Current.MainPage = new NavigationPageGradientHeader(new Admin.NotificationPage.NotificationPage())
+                    //    {
+                    //        LeftColor = Color.FromHex("#2699ca"),
+                    //        RightColor = Color.FromHex("#2baae1")
+                    //    };
+                    //    ResetMenu(item);
+                    //    break;
                 }
                 masterPage.ListView.SelectedItem = null;
             }

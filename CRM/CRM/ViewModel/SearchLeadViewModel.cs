@@ -4,6 +4,7 @@ using CRM.Common.Constants;
 using CRM.Common.Helpers;
 using CRM.Model;
 using CRM.View.LeadSelection;
+using CRM.View.SearchLead;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -98,7 +99,7 @@ namespace CRM.ViewModel
                     campaginId = SelectedCampaign.Id;
 
                 var searchData = new Tuple<int, int, string, string>(statusId, campaginId, LeadName, MobileNumber);
-                await _navigation.PushAsync(new LeadSelectionPage(searchData));
+                await _navigation.PushAsync(new LeadSearchPage(searchData));
             }
             catch (Exception ex)
             {
