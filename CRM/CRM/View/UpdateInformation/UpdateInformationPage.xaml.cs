@@ -22,10 +22,10 @@ namespace CRM.View.UpdateInformation
             _updateLeadInfoViewModel.Initialize(newLeadsDatas,updateType);
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            return true;
-        }
+        //protected override bool OnBackButtonPressed()
+        //{
+        //    return true;
+        //}
 
         private void MobileNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -73,9 +73,9 @@ namespace CRM.View.UpdateInformation
             }
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            date.IsOpen = !date.IsOpen;
-        }
+        //private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        //{
+        //    date.IsOpen = !date.IsOpen;
+        //}
     }
 }

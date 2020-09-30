@@ -170,8 +170,10 @@
                                        Text="{Binding CampDescription}" />
                                 <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource mobile_number_style}" 
                                        Text="{Binding LeadActionDate}"  />
-                                <Label Grid.Row="1" Grid.Column="2" Style="{StaticResource mobile_number_style}" 
-                                       Text="{Binding LeadFollowuptime}" />
+                                <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource mobile_number_style}" 
+                                       Text="{Binding CurrentStatus}" />
+                                <!--<Label Grid.Row="1" Grid.Column="2" Style="{StaticResource mobile_number_style}" 
+                                       Text="{Binding CurrentStatus}" />-->
                                 <Image Source="ic_call" HeightRequest="30" WidthRequest="30"
                                        Grid.Column="3" Grid.RowSpan="3" VerticalOptions="CenterAndExpand">
                                     <Image.GestureRecognizers>

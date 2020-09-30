@@ -116,15 +116,16 @@ namespace CRM.ViewModel
             if (!string.IsNullOrEmpty(NewLeadsData.Status))
                 SelectedStatus = StatusList.Find(s => s == NewLeadsData.Status);
         }
-        public void ExecuteOnLeadTransfer(object obj)
+        public async void ExecuteOnLeadTransfer(object obj)
         {
             var list = new List<NewLeadsData>();
             list.Add(NewLeadsData);
-            App.MasterDetailPage.Detail = new NavigationPage(new TransferLeadPage(list))
-            {
-                BarBackgroundColor = Color.FromHex(App.nav_bar_color),
-                BarTextColor = Color.FromHex(App.nav_bar_text_color),
-            };
+            await _navigation.PushAsync(new TransferLeadPage(list));
+            //App.MasterDetailPage.Detail = new NavigationPage(new TransferLeadPage(list))
+            //{
+            //    BarBackgroundColor = Color.FromHex(App.nav_bar_color),
+            //    BarTextColor = Color.FromHex(App.nav_bar_text_color),
+            //};
         }
         public async void ExecuteOnCreditForm(object obj)
         {
@@ -208,15 +209,16 @@ namespace CRM.ViewModel
                 BarTextColor = Color.FromHex("#FFFFFF"),
             };
         }
-        public void ExecuteOnEditLeadDetail(object obj)
+        public async void ExecuteOnEditLeadDetail(object obj)
         {
             var list = new List<NewLeadsData>();
             list.Add(NewLeadsData);
-            App.MasterDetailPage.Detail = new NavigationPage(new UpdateInformationPage(list, "UpdateAlotedLead"))
-            {
-                BarBackgroundColor = Color.FromHex(App.nav_bar_color),
-                BarTextColor = Color.FromHex(App.nav_bar_text_color),
-            };
+            await _navigation.PushAsync(new UpdateInformationPage(list, "UpdateAlotedLead"));
+            //App.MasterDetailPage.Detail = new NavigationPage(new UpdateInformationPage(list, "UpdateAlotedLead"))
+            //{
+            //    BarBackgroundColor = Color.FromHex(App.nav_bar_color),
+            //    BarTextColor = Color.FromHex(App.nav_bar_text_color),
+            //};
         }
         #endregion
     }

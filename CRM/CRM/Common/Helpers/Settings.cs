@@ -11,8 +11,7 @@ namespace CRM.Common.Helpers
         private static ISettings AppSettings => CrossSettings.Current;
 
         #region Setting Constants
-        private const string UserRole = "User_Role";
-        private static readonly string DefaultUserRole = string.Empty;
+        
 
         private const string UserId = "User_Id";
         private static readonly string DefaultUserId = string.Empty;
@@ -31,9 +30,21 @@ namespace CRM.Common.Helpers
 
         private const string WhatsappNo = "Whatsapp_No";
         private static readonly string DefaultWhatsappNo = string.Empty;
+
+        private const string UserRole = "User_Role";
+        private static readonly string DefaultUserRole = string.Empty;
+
+        private const string DeviceToken = "Device_token";
+        private static readonly string DefaultDeviceToken = string.Empty;
+
         #endregion
 
         #region Setting Properties
+        public static string CRM_DeviceToken
+        {
+            get => AppSettings.GetValueOrDefault(nameof(DeviceToken), DefaultDeviceToken);
+            set => AppSettings.AddOrUpdateValue(nameof(DeviceToken), value);
+        }
         public static string CRM_UserRole
         {
             get => AppSettings.GetValueOrDefault(nameof(UserRole), DefaultUserRole);

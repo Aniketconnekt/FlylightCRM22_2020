@@ -21,10 +21,10 @@ namespace CRM.Droid
         {
 
         }
-        //public override void OnMessageReceived(RemoteMessage message)
-        //{
-        //    base.OnMessageReceived(message);
-        //    new NotificationHelper().CreateNotification(message.GetNotification().Title, message.GetNotification().Body);
-        //}
+        public override void OnMessageReceived(RemoteMessage message)
+        {
+            base.OnMessageReceived(message);
+            new NotificationHelper().CreateNotification(message.GetNotification().Title, message.GetNotification().Body);
+        }
     }
 }

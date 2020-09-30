@@ -22,9 +22,9 @@ namespace CRM.View.Admin.Compaign
             BindingContext = _addCampaignViewModel = new AddCampaignViewModel(Navigation);
             _addCampaignViewModel.Initialize(campaignData);
         }
-        protected override bool OnBackButtonPressed()
-        {
-            return true;
-        }
+        //protected override bool OnBackButtonPressed()
+        //{
+        //    return true;
+        //}
     }
 }

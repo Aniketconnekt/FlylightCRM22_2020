@@ -118,75 +118,83 @@
                         <RowDefinition Height="45"/>
                     </Grid.RowDefinitions>
 
-                    <Label Text="Lead Name*" Style="{StaticResource label_style}"/>
-                    <local:CustomEntry Grid.Row="1" Text="{Binding Name}" Placeholder="Enter lead name..." 
-                                       Style="{StaticResource entry_style}"
-                                       TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>
+                    <Label Text="Lead Name" Style="{StaticResource label_style}"/>
+                    <!--<local:CustomEntry Grid.Row="1" Text="{Binding Name}" Placeholder="Enter lead name..." 
+                                       Style="{StaticResource entry_style}" BackgroundColor="Yellow"
+                                       TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>-->
+                    <Label Grid.Row="1" Text="{Binding Name}" Style="{StaticResource entry_style}"/>
                     <BoxView Grid.Row="2" Style="{StaticResource boxview_style}"/>
 
-                    <Label Grid.Row="3" Text="Mobile Number* :" Style="{StaticResource label_style}"/>
-                    <local:CustomEntry Grid.Row="4" Text="{Binding MobileNumber}" Placeholder="Enter mobile number..." 
+                    <Label Grid.Row="3" Text="Mobile Number :" Style="{StaticResource label_style}"/>
+                    <!--<local:CustomEntry Grid.Row="4" Text="{Binding MobileNumber}" Placeholder="Enter mobile number..." 
                                        Style="{StaticResource entry_style}" Keyboard="Numeric" 
-                                       TextChanged="MobileNumber_TextChanged"/>
+                                       TextChanged="MobileNumber_TextChanged"/>-->
+                    <Label Grid.Row="4" Text="{Binding MobileNumber}" Style="{StaticResource entry_style}"></Label>
                     <BoxView Grid.Row="5" Style="{StaticResource boxview_style}"/>
 
                     <Label Grid.Row="6" Text="Alternate Number" Style="{StaticResource label_style}"/>
                     <local:CustomEntry Text="{Binding AlternateNo,Mode=TwoWay}" Style="{StaticResource entry_style}" 
-                                       Placeholder="alternate number" Keyboard="Numeric"
+                                       Placeholder="alternate number" Keyboard="Numeric" MaxLength="10"
                                        TextChanged="MobileNumber_TextChanged" Grid.Row="7"/>
                     <BoxView Grid.Row="8" x:Name="alternate_mobile_number_separator" Style="{StaticResource boxview_style}"/>
 
-                    <Label Grid.Row="9" Text="Company* :" Style="{StaticResource label_style}"/>
-                    <local:CustomEntry Grid.Row="10"  Placeholder="Enter company name..." 
+                    <Label Grid.Row="9" Text="Company :" Style="{StaticResource label_style}"/>
+                    <!--<local:CustomEntry Grid.Row="10"  Placeholder="Enter company name..." 
                                        Style="{StaticResource entry_style}" Text="{Binding Company}"
-                                       TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>
+                                       TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>-->
+                    <Label Grid.Row="10" Text="{Binding Company}" Style="{StaticResource entry_style}"></Label>
                     <BoxView Grid.Row="11" Style="{StaticResource boxview_style}"/>
 
                     <Label Grid.Row="12" Text="Address :" Style="{StaticResource label_style}"/>
-                    <local:CustomEntry Grid.Row="13"  Placeholder="Enter address..." 
-                                   Style="{StaticResource entry_style}" Text="{Binding Address}"/>
+                    <!--<local:CustomEntry Grid.Row="13"  Placeholder="Enter address..." 
+                                   Style="{StaticResource entry_style}" Text="{Binding Address}"/>-->
+                    <Label Grid.Row="13" Style="{StaticResource entry_style}" Text="{Binding Address}"/>
                     <BoxView Grid.Row="14" Style="{StaticResource boxview_style}"/>
 
                     <Label Grid.Row="15" Text="City :" Style="{StaticResource label_style}"/>
-                    <local:CustomEntry Grid.Row="16" Placeholder="Enter city..." 
+                    <!--<local:CustomEntry Grid.Row="16" Placeholder="Enter city..." 
                                    Style="{StaticResource entry_style}" Text="{Binding City}"
-                                       TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>
+                                       TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>-->
+                    <Label Grid.Row="16" Style="{StaticResource entry_style}" Text="{Binding City}"/>
                     <BoxView Grid.Row="17" Style="{StaticResource boxview_style}"/>
 
                     <Label Grid.Row="18" Text="District :" Style="{StaticResource label_style}"/>
-                    <local:CustomEntry Grid.Row="19"  Placeholder="Enter district..." 
+                    <!--<local:CustomEntry Grid.Row="19"  Placeholder="Enter district..." 
                                    Style="{StaticResource entry_style}" Text="{Binding District}"
-                                       TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>
+                                       TextChanged="Txt_user_name_TextChanged" MaxLength="30"/>-->
+                    <Label Grid.Row="19" Style="{StaticResource entry_style}" Text="{Binding District}"/>
                     <BoxView Grid.Row="20" Style="{StaticResource boxview_style}"/>
 
                     <Label Grid.Row="21" Text="State: " Style="{StaticResource label_style}"/>
-                    <local:CustomPicker TitleColor="#A1A1A1" Image="ic_dropdown" Title="Select State" 
+                    <!--<local:CustomPicker TitleColor="#A1A1A1" Image="ic_dropdown" Title="Select State" 
                                         TextColor="{StaticResource admin_green_color}" Grid.Row="22"
                                         ItemsSource="{Binding StateCollection}" SelectedItem="{Binding State,Mode=TwoWay}"
                                         ItemDisplayBinding="{Binding Statename}">
                         <Picker.FontSize>
                             <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
                         </Picker.FontSize>
-                    </local:CustomPicker>
+                    </local:CustomPicker>-->
+                    <Label Grid.Row="22" Text="{Binding Statename}" Style="{StaticResource entry_style}"/>
                     <BoxView Grid.Row="23" x:Name="state_separator" Style="{StaticResource boxview_style}"/>
 
                     <Label Grid.Row="24" Text="Date of Birth" Style="{StaticResource label_style}"/>
                     <Grid Grid.Row="25" RowSpacing="0">
                         <Label Text="{Binding DOB,Mode=TwoWay}" VerticalTextAlignment="End"
                                TextColor="#A1A1A1" FontSize="16">
-                            <Label.GestureRecognizers>
+                            <!--<Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                            </Label.GestureRecognizers>
+                            </Label.GestureRecognizers>-->
                         </Label>
-                        <local:SfCustomDatePicker x:Name="date" ColumnHeaderHeight="40" HorizontalOptions="Center"
+                        <!--<local:SfCustomDatePicker x:Name="date" ColumnHeaderHeight="40" HorizontalOptions="Center"
                                               PickerHeight="400" PickerMode="Dialog" PickerWidth="300" 
-                                              SelectedItem="{Binding StartDate}" VerticalOptions="Center" />
+                                              SelectedItem="{Binding StartDate}" VerticalOptions="Center" />-->
                     </Grid>
                     <BoxView Grid.Row="26" Style="{StaticResource boxview_style}"/>
 
                     <Label Grid.Row="27" Text="Email :" Style="{StaticResource label_style}"/>
-                    <local:CustomEntry Grid.Row="28"  Placeholder="Enter email..." 
-                                   Style="{StaticResource entry_style}" Text="{Binding Email}"/>
+                    <!--<local:CustomEntry Grid.Row="28"  Placeholder="Enter email..." 
+                                   Style="{StaticResource entry_style}" Text="{Binding Email}"/>-->
+                    <Label Grid.Row="28" Style="{StaticResource entry_style}" Text="{Binding Email}"/>
                     <BoxView Grid.Row="29" Style="{StaticResource boxview_style}"/>
 
                     <Grid Grid.Row="30">

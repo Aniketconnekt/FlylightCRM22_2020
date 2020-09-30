@@ -253,7 +253,7 @@ namespace CRM.ViewModel
 
         public async void ExecuteSearchCommand(object obj)
         {
-            Calledlist.Clear();
+            
             int statusId = 0;
             if (Selectedstatus != null)
                 statusId = Selectedstatus.Id;
@@ -276,6 +276,7 @@ namespace CRM.ViewModel
                 }
                 else if (current == NetworkAccess.Internet)
                 {
+                    Calledlist.Clear();
                     var userId = Settings.CRM_UserId; //await SecureStorage.GetAsync(AppConstant.UserId);
                     HttpClientHelper apicall = new HttpClientHelper(String.Format(ApiUrls.SearchForPerformance, status,  searchvalue, userid, lastrecordsid, Fdate, Tdate), string.Empty);
                     var response = await apicall.Get<LeadDetailsModel>();
@@ -284,6 +285,10 @@ namespace CRM.ViewModel
                         foreach (var lead in response.Object.CalledList)
                             Calledlist.Add(lead);
                         LeadsCalledCount = Calledlist.Count() + "/" + response.TotalCount;
+                        if (Calledlist.Count() < 20 || Calledlist.Count() == response.TotalCount)
+                            LoadMoreOption = LoadMoreOption.None;
+                        else
+                            LoadMoreOption = LoadMoreOption.Manual;
                     }
                     else
                     {

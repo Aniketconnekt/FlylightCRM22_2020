@@ -111,7 +111,7 @@ namespace CRM.ViewModel
                 if (current == NetworkAccess.Internet)
                 {
                     var userID = Settings.CRM_UserId; //await SecureStorage.GetAsync(AppConstant.UserId);
-                    HttpClientHelper apicall = new HttpClientHelper(String.Format(ApiUrls.GetLeadsbycampidUrl,userID, SelectedCampaign.Id, lastrecordsid), string.Empty);
+                    HttpClientHelper apicall = new HttpClientHelper(String.Format(ApiUrls.GetLeadsHistorybycampidUrl, userID, SelectedCampaign.Id, lastrecordsid), string.Empty);
                     var response = await apicall.Get<Leads>();
                     if (response != null && response.Result && response.List != null && response.Message.Equals("Success"))
                     {
@@ -140,6 +140,42 @@ namespace CRM.ViewModel
                 await ShowAlert(ex.Message);
             }
             HideLoading();
+            //try
+            //{
+            //    ShowLoading();
+            //    var current = Connectivity.NetworkAccess;
+            //    if (current == NetworkAccess.Internet)
+            //    {
+            //        var userID = Settings.CRM_UserId; //await SecureStorage.GetAsync(AppConstant.UserId);
+            //        HttpClientHelper apicall = new HttpClientHelper(String.Format(ApiUrls.GetLeadsbycampidUrl,userID, SelectedCampaign.Id, lastrecordsid), string.Empty);
+            //        var response = await apicall.Get<Leads>();
+            //        if (response != null && response.Result && response.List != null && response.Message.Equals("Success"))
+            //        {
+            //            foreach (var history in response.List)
+            //                LeadHistoryData.Add(history);
+
+            //            LeadsCount = "Leads: " + LeadHistoryData.Count() + "/" + response.TotalCount;
+
+            //            if (response.List.Count() < 20 || response.List.Count() == response.TotalCount)
+            //                LoadMoreOption = Syncfusion.ListView.XForms.LoadMoreOption.None;
+            //            else
+            //                LoadMoreOption = Syncfusion.ListView.XForms.LoadMoreOption.Manual;
+            //        }
+            //        else
+            //            LoadMoreOption = Syncfusion.ListView.XForms.LoadMoreOption.None;
+            //    }
+            //    else
+            //    {
+            //        HideLoading();
+            //        await UserDialogs.Instance.AlertAsync(AppConstant.NETWORK_FAILURE, "", "Ok");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    HideLoading();
+            //    await ShowAlert(ex.Message);
+            //}
+            //HideLoading();
         }
         #endregion
     }

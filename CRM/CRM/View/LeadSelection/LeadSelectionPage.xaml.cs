@@ -31,8 +31,8 @@ namespace CRM.View.LeadSelection
         {
             if (edit_active.IsVisible == true)
                 _leadSelectionViewModel.EditLeadCommand.Execute(null);
-            else if (delete_active.IsVisible == true)
-                _leadSelectionViewModel.DeleteLeadCommand.Execute(null);
+            //else if (delete_active.IsVisible == true)
+            //    _leadSelectionViewModel.DeleteLeadCommand.Execute(null);
             else if (allotted_to_user_active.IsVisible == true)
                 _leadSelectionViewModel.TransferLeadCommand.Execute(null);
         }
@@ -46,28 +46,28 @@ namespace CRM.View.LeadSelection
                 allotted_to_user_active.IsVisible = true;
                 allotted_to_user_unactive.IsVisible = false;
             }
-            delete_active.IsVisible = false;
-            delete_unactive.IsVisible = true;
+            //delete_active.IsVisible = false;
+            //delete_unactive.IsVisible = true;
 
             edit_active.IsVisible = false;
             edit_unactive.IsVisible = true;
         }
-        private void DeleteClicked(object sender, EventArgs e)
-        {
-            if (delete_active.IsVisible)
-            {
-            }
-            else
-            {
-                delete_active.IsVisible = true;
-                delete_unactive.IsVisible = false;
-            }
-            allotted_to_user_active.IsVisible = false;
-            allotted_to_user_unactive.IsVisible = true;
+        //private void DeleteClicked(object sender, EventArgs e)
+        //{
+        //    if (delete_active.IsVisible)
+        //    {
+        //    }
+        //    else
+        //    {
+        //        delete_active.IsVisible = true;
+        //        delete_unactive.IsVisible = false;
+        //    }
+        //    allotted_to_user_active.IsVisible = false;
+        //    allotted_to_user_unactive.IsVisible = true;
 
-            edit_active.IsVisible = false;
-            edit_unactive.IsVisible = true;
-        }
+        //    edit_active.IsVisible = false;
+        //    edit_unactive.IsVisible = true;
+        //}
         private void EditClicked(object sender, EventArgs e)
         {
             if (edit_active.IsVisible)
@@ -78,8 +78,8 @@ namespace CRM.View.LeadSelection
                 edit_active.IsVisible = true;
                 edit_unactive.IsVisible = false;
             }
-            delete_active.IsVisible = false;
-            delete_unactive.IsVisible = true;
+            //delete_active.IsVisible = false;
+            //delete_unactive.IsVisible = true;
 
             allotted_to_user_active.IsVisible = false;
             allotted_to_user_unactive.IsVisible = true;

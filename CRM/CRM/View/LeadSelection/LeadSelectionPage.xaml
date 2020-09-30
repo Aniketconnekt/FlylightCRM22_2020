@@ -200,7 +200,7 @@
                     <Image x:Name="allotted_to_user_unactive" Source="radio" Margin="4"/>
                     <Label Grid.Column="1" Text="Lead Allotted To User" Style="{StaticResource small_text_style}"/>
                 </Grid>
-                <Grid Grid.Column="1" ColumnSpacing="5" HorizontalOptions="CenterAndExpand" 
+                <!--<Grid Grid.Column="1" ColumnSpacing="5" HorizontalOptions="CenterAndExpand" 
                       IsVisible="{Binding IsDeleteEditVisible}">
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="DeleteClicked"/>
@@ -212,7 +212,7 @@
                     <Image x:Name="delete_active" Source="radio_active" Margin="4" IsVisible="False"/>
                     <Image x:Name="delete_unactive" Source="radio" Margin="4"/>
                     <Label Grid.Column="1" Text="Delete" Style="{StaticResource small_text_style}"/>
-                </Grid>
+                </Grid>-->
                 <Grid Grid.Column="2" ColumnSpacing="5" HorizontalOptions="EndAndExpand"
                       IsVisible="{Binding IsDeleteEditVisible}">
                     <Grid.GestureRecognizers>

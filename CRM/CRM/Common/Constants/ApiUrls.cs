@@ -67,6 +67,8 @@
         public const string GetUserByCampIdUrl = Baseurl + "GetUserByCampId?Campid={0}&LoginUserid={1}";
         public const string GetFollowupListForUserUrl = Baseurl + "GetFollowupListForUser?Campid={0}&lastrecordsid={1}&Fromdate={2}&Todate={3}&Userid={4}"; 
         public const string GetLeadsbycampidUrl = Baseurl + "GetLeadsbycampid?Userid={0}&Campid={1}&lastrecordsid={2}"; 
+        public const string GetLeadsHistorybycampidUrl= Baseurl+ "GetLeadsHistorybycampid?Userid={0}&Campid={1}&lastrecordsid={2}";
+        
         public const string SaveLeadCreditsUrl = Baseurl + "SaveLeadCredits";
         public const string SendReminderUrl = Baseurl + "SendReminder?Leadid={0}&Meaasge={1}";
         public const string GetLeadsListFromPerformanceUrl = Baseurl + "GetLeadsListFromPerformance?userid={0}&lastrecordsid={1}&Status={2}&CampId={3}"; 

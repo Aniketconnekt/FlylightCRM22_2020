@@ -29,7 +29,7 @@ namespace CRM.ViewModel.AdminViewModel
         #region Commands
         public DelegateCommand AddNewLeadsCommand => new DelegateCommand(ExecuteOnAddNewLeads);
         public DelegateCommand UpdateLeadCommand => new DelegateCommand(ExecuteOnUpdateLead);
-        public DelegateCommand DeleteLeadCommand => new DelegateCommand(ExecuteOnDeleteLead);
+        //public DelegateCommand DeleteLeadCommand => new DelegateCommand(ExecuteOnDeleteLead);
         public DelegateCommand LeadsSearch => new DelegateCommand(ExecuteOnLeadsSearch);
         public DelegateCommand LoadMoreItemsCommand => new DelegateCommand(ExecuteOnLoadMoreItems);
         #endregion
@@ -94,13 +94,14 @@ namespace CRM.ViewModel.AdminViewModel
             }
             HideLoading();
         }
-        public void ExecuteOnAddNewLeads(object obj)
+        public async void ExecuteOnAddNewLeads(object obj)
         {
-            App.MasterDetailPage.Detail = new NavigationPage(new AddLead(null))
-            {
-                BarBackgroundColor = Color.FromHex(App.nav_bar_color),
-                BarTextColor = Color.FromHex(App.nav_bar_text_color),
-            };
+            await _navigation.PushAsync(new AddLead(null));
+            //App.MasterDetailPage.Detail = new NavigationPage(new AddLead(null))
+            //{
+            //    BarBackgroundColor = Color.FromHex(App.nav_bar_color),
+            //    BarTextColor = Color.FromHex(App.nav_bar_text_color),
+            //};
         }
         public async void ExecuteOnUpdateLead(object obj)
         {
@@ -115,55 +116,55 @@ namespace CRM.ViewModel.AdminViewModel
                     BarTextColor = Color.FromHex(App.nav_bar_text_color)
                 };
         }
-        public async void ExecuteOnDeleteLead(object obj)
-        {
-            try
-            {
-                if (LeadsDataList.Count() == 0)
-                    await ShowAlert("Please select a lead for delete.");
-                else
-                {
-                    var result = await UserDialogs.Instance.ConfirmAsync("Do you want to delete?", "", "Yes", "No");
-                    if (result)
-                    {
-                        ShowLoading();
-                        var current = Connectivity.NetworkAccess;
-                        if (current == NetworkAccess.Internet)
-                        {
-                            string delLeads = String.Empty;
-                            foreach (var del in LeadsDataList)
-                                delLeads += del.Id.ToString() + ",";
+        //public async void ExecuteOnDeleteLead(object obj)
+        //{
+        //    try
+        //    {
+        //        if (LeadsDataList.Count() == 0)
+        //            await ShowAlert("Please select a lead for delete.");
+        //        else
+        //        {
+        //            var result = await UserDialogs.Instance.ConfirmAsync("Do you want to delete?", "", "Yes", "No");
+        //            if (result)
+        //            {
+        //                ShowLoading();
+        //                var current = Connectivity.NetworkAccess;
+        //                if (current == NetworkAccess.Internet)
+        //                {
+        //                    string delLeads = String.Empty;
+        //                    foreach (var del in LeadsDataList)
+        //                        delLeads += del.Id.ToString() + ",";
 
-                            delLeads = delLeads.Remove(delLeads.Length - 1, 1);
+        //                    delLeads = delLeads.Remove(delLeads.Length - 1, 1);
 
-                            HttpClientHelper apicall = new HttpClientHelper(String.Format(ApiUrls.DeleteLeadsUrl, delLeads), string.Empty);
-                            var response = await apicall.Get<bool>();
-                            if (response)
-                            {
-                                HideLoading();
-                                await ShowAlert("Leads(s) deleted successfully.");
-                                await Initialize();
-                            }
-                            else
-                            {
-                                HideLoading();
-                                await ShowAlert(AppConstant.SOMETHING_WRONG);
-                            }
-                        }
-                        else
-                        {
-                            HideLoading();
-                            await UserDialogs.Instance.AlertAsync(AppConstant.NETWORK_FAILURE, "", "Ok");
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                HideLoading();
-                await ShowAlert(ex.Message);
-            }
-        }
+        //                    HttpClientHelper apicall = new HttpClientHelper(String.Format(ApiUrls.DeleteLeadsUrl, delLeads), string.Empty);
+        //                    var response = await apicall.Get<bool>();
+        //                    if (response)
+        //                    {
+        //                        HideLoading();
+        //                        await ShowAlert("Leads(s) deleted successfully.");
+        //                        await Initialize();
+        //                    }
+        //                    else
+        //                    {
+        //                        HideLoading();
+        //                        await ShowAlert(AppConstant.SOMETHING_WRONG);
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    HideLoading();
+        //                    await UserDialogs.Instance.AlertAsync(AppConstant.NETWORK_FAILURE, "", "Ok");
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        HideLoading();
+        //        await ShowAlert(ex.Message);
+        //    }
+        //}
         public async void ExecuteOnLeadsSearch(object obj)
         {
             LeadsData = new ObservableCollection<LeadsData>();

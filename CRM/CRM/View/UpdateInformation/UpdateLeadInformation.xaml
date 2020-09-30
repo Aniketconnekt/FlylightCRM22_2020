@@ -111,12 +111,12 @@
                         <RowDefinition Height="45"/>
                     </Grid.RowDefinitions>
 
-                    <Label Text="Lead Name" Style="{StaticResource label_style}"/>
+                    <Label Text="Lead Name*" Style="{StaticResource label_style}"/>
                     <local:CustomEntry Grid.Row="1" Text="{Binding NewLeadsData.Name}" Placeholder="Enter lead name..." 
                                        Style="{StaticResource entry_style}" IsReadOnly="True"/>
                     <BoxView Grid.Row="2" Style="{StaticResource boxview_style}"/>
 
-                    <Label Grid.Row="3" Text="Mobile Number :" Style="{StaticResource label_style}"/>
+                    <Label Grid.Row="3" Text="Mobile Number* :" Style="{StaticResource label_style}"/>
                     <local:CustomEntry Grid.Row="4" Text="{Binding NewLeadsData.MobileNumber}"
                                    Style="{StaticResource entry_style}" Keyboard="Numeric" IsReadOnly="True"/>
                     <BoxView Grid.Row="5" Style="{StaticResource boxview_style}"/>
@@ -157,7 +157,7 @@
                     </Grid>
                     <BoxView Grid.Row="8" Style="{StaticResource boxview_style}"/>
 
-                    <Label Grid.Row="9" Text="Select Status" Style="{StaticResource label_style}"/>
+                    <Label Grid.Row="9" Text="Select Status*" Style="{StaticResource label_style}"/>
                     <local:CustomPicker Grid.Row="10"  Title="Select Action" Image="ic_dropdown" 
                                         ItemsSource="{Binding StatusList}" SelectedItem="{Binding SelectedStatus}" 
                                         ItemDisplayBinding="{Binding .}">
@@ -167,7 +167,7 @@
                     </local:CustomPicker>
                     <BoxView Grid.Row="11" Style="{StaticResource boxview_style}"/>
 
-                    <Label Grid.Row="12" Text="Select Action" Style="{StaticResource label_style}"/>
+                    <Label Grid.Row="12" Text="Select Action*" Style="{StaticResource label_style}"/>
                     <local:CustomPicker Grid.Row="13" Image="ic_dropdown" Title="Select Status" 
                                         ItemsSource="{Binding ActionsList}" SelectedItem="{Binding SelectedAction}" 
                                         ItemDisplayBinding="{Binding ActionName}">
@@ -177,7 +177,7 @@
                     </local:CustomPicker>
                     <BoxView Grid.Row="14" Style="{StaticResource boxview_style}"/>
 
-                    <Label Grid.Row="15" Text="Enter Description" Style="{StaticResource label_style}"/>
+                    <Label Grid.Row="15" Text="Enter Description*" Style="{StaticResource label_style}"/>
                     <local:CustomEntry Grid.Row="16" Text="{Binding NewLeadsData.Description}" Placeholder="Enter Description" 
                                        Style="{StaticResource entry_style}"/>
                     <BoxView Grid.Row="17" Style="{StaticResource boxview_style}"/>

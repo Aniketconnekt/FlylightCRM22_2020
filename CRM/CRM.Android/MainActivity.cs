@@ -39,6 +39,9 @@ namespace CRM.Droid
             CachedImageRenderer.Init(true);
             CachedImageRenderer.InitImageViewHandler();
             LoadApplication(new App(contactsService));
+            
+
+            
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

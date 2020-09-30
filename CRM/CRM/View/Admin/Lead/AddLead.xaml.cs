@@ -31,10 +31,10 @@ namespace CRM.View.Admin.Lead
             _addLeadViewModel.Initialize(contactModel);
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            return true;
-        }
+        //protected override bool OnBackButtonPressed()
+        //{
+        //    return true;
+        //}
 
         private void MobileNumber_TextChanged(object sender, TextChangedEventArgs e)
         {

@@ -30,9 +30,9 @@ namespace CRM.View.TransferLead
             _transferLeadViewModel.Initialize(_newLeadsData);
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            return true;
-        }
+        //protected override bool OnBackButtonPressed()
+        //{
+        //    return true;
+        //}
     }
 }

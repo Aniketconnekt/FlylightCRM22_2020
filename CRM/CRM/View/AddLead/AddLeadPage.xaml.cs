@@ -20,12 +20,10 @@ namespace CRM.View.AddLead
             BindingContext = _addLeadViewModel = new AddLeadViewModel(Navigation);
             _addLeadViewModel.Initialize();
         }
-
-        protected override bool OnBackButtonPressed()
-        {
-            return true;
-        }
-
+        //protected override bool OnBackButtonPressed()
+        //{
+        //    return true;
+        //}
         private void txt_lead_name_Focused(object sender, FocusEventArgs e)
         {
             lead_name_separator.BackgroundColor = Color.FromHex("#2BAAE1");

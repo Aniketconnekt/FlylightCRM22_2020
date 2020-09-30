@@ -244,19 +244,21 @@ namespace CRM.ViewModel
             else if (UsersDatasList.Count() > 1)
                 await ShowAlert("Please select single lead for update.");
             else
-                App.MasterDetailPage.Detail = new NavigationPage(new UpdateInformationPage(UsersDatasList, "UpdateUserLead"))
-                {
-                    BarBackgroundColor = Color.FromHex(App.nav_bar_color),
-                    BarTextColor = Color.FromHex(App.nav_bar_text_color),
-                };
+                await _navigation.PushAsync(new UpdateInformationPage(UsersDatasList, "UpdateUserLead"));
+                //App.MasterDetailPage.Detail = new NavigationPage(new UpdateInformationPage(UsersDatasList, "UpdateUserLead"))
+                //{
+                //    BarBackgroundColor = Color.FromHex(App.nav_bar_color),
+                //    BarTextColor = Color.FromHex(App.nav_bar_text_color),
+                //};
         }
-        public void ExecuteOnAddLead(object obj)
+        public async void ExecuteOnAddLead(object obj)
         {
-            App.MasterDetailPage.Detail = new NavigationPage(new AddLeadPage())
-            {
-                BarBackgroundColor = Color.FromHex(App.nav_bar_color),
-                BarTextColor = Color.FromHex(App.nav_bar_text_color),
-            };
+            await _navigation.PushAsync(new AddLeadPage());
+            //App.MasterDetailPage.Detail = new NavigationPage(new AddLeadPage())
+            //{
+            //    BarBackgroundColor = Color.FromHex(App.nav_bar_color),
+            //    BarTextColor = Color.FromHex(App.nav_bar_text_color),
+            //};
         }
         #endregion
     }

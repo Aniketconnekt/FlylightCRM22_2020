@@ -17,11 +17,17 @@ namespace CRM.Droid
     [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
     public class MyFirebaseIIDService : FirebaseInstanceIdService
     {
+
         const string TAG = "MyFirebaseIIDService";
+
+        public string DeviceToken;
+
+
         public override void OnTokenRefresh()
         {
             var refreshedToken = FirebaseInstanceId.Instance.Token;
             SendRegistrationToServer(refreshedToken);
+            DeviceToken = refreshedToken;
         }
         void SendRegistrationToServer(string token)
         {

@@ -26,7 +26,7 @@ namespace CRM.ViewModel
         #region CTOR
         public UpdateLeadInfoViewModel(INavigation navigation) : base(navigation)
         {
-           StartDate = InitializeDate();
+            StartDate = InitializeDate();
         }
         #endregion
 
@@ -171,13 +171,19 @@ namespace CRM.ViewModel
         {
             try
             {
-                if (await Validation())
-                {
-                    if (_updateType.Equals("UpdateUserLead"))
-                        await UpdateLead();
-                    else
-                        await UpdateAllottedLead();
-                }
+                //if (await Validation())
+                //{
+                //    if (_updateType.Equals("UpdateUserLead"))
+                //        await UpdateLead();
+                //    else
+                //        await UpdateAllottedLead();
+                //}
+
+                if (_updateType.Equals("UpdateUserLead"))
+                    await UpdateLead();
+                else
+                    await UpdateAllottedLead();
+
             }
             catch (Exception ex)
             {
@@ -185,25 +191,15 @@ namespace CRM.ViewModel
                 await ShowAlert(ex.Message);
             }
         }
-        private async Task<bool> Validation()
-        {
-            if (string.IsNullOrWhiteSpace(Name))
-            {
-                await ShowAlert("Please enter name.");
-                return false;
-            }
-            else if (string.IsNullOrWhiteSpace(Company))
-            {
-                await ShowAlert("Please enter company.");
-                return false;
-            }
-            else if (string.IsNullOrWhiteSpace(MobileNumber))
-            {
-                await ShowAlert("Please enter mobile number.");
-                return false;
-            }
-            return true;
-        }
+        //private async Task<bool> Validation()
+        //{
+        //    if (string.IsNullOrWhiteSpace(AlternateNo))
+        //    {
+        //        await ShowAlert("Please enter alternate number.");
+        //        return false;
+        //    }
+        //    return true;
+        //}
         private async Task UpdateLead()
         {
             try
@@ -280,7 +276,14 @@ namespace CRM.ViewModel
                     AddUserLeadModel.Address = Address;
                     AddUserLeadModel.City = City;
                     AddUserLeadModel.District = District;
-                    AddUserLeadModel.State = State.Statename;
+                    if (State != null)
+                    {
+                        AddUserLeadModel.State = State.Statename;
+                    }
+                    else
+                    {
+                        AddUserLeadModel.State = null;
+                    }
                     AddUserLeadModel.Email = Email;
                     AddUserLeadModel.CreatedById = Settings.CRM_CreatedById; //await SecureStorage.GetAsync(AppConstant.CreatedById);
                     AddUserLeadModel.UserId = Settings.CRM_UserId; //await SecureStorage.GetAsync(AppConstant.UserId);
@@ -324,13 +327,14 @@ namespace CRM.ViewModel
                 BarTextColor = Color.FromHex("#FFFFFF"),
             };
         }
-        public void ExecuteOnTransferLead(object obj)
+        public async void ExecuteOnTransferLead(object obj)
         {
-            App.MasterDetailPage.Detail = new NavigationPage(new TransferLeadPage(_newLeadsDatas))
-            {
-                BarBackgroundColor = Color.FromHex(App.nav_bar_color),
-                BarTextColor = Color.FromHex(App.nav_bar_text_color),
-            };
+            await _navigation.PushAsync(new TransferLeadPage(_newLeadsDatas));
+            //App.MasterDetailPage.Detail = new NavigationPage(new TransferLeadPage(_newLeadsDatas))
+            //{
+            //    BarBackgroundColor = Color.FromHex(App.nav_bar_color),
+            //    BarTextColor = Color.FromHex(App.nav_bar_text_color),
+            //};
         }
         private void BindStartDate(DateTime dt)
         {

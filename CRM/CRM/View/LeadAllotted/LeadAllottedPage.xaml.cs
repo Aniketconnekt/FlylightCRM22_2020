@@ -22,10 +22,10 @@ namespace CRM.View.LeadAllotted
             _leadAllottedViewModel.Initialize(selectedCampaign);
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            return true;
-        }
+        //protected override bool OnBackButtonPressed()
+        //{
+        //    return true;
+        //}
 
         private async void PhoneCall_Tapped(object sender, EventArgs e)
         {

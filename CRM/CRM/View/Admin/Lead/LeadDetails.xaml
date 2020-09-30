@@ -70,7 +70,7 @@
             <Style x:Key="entry_style" TargetType="Entry">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="PlaceholderColor" Value="#a1a1a1" />
@@ -100,7 +100,7 @@
                 <Setter Property="HorizontalTextAlignment" Value="End" />
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "13" Tablet = "16" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />
@@ -191,7 +191,7 @@
                                     <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
                                 </Picker.FontSize>
                             </local:CustomPicker>-->
-                            <local:CustomPicker Image="ic_dropdown" Title="Select Status" ItemsSource="{Binding StatusData}" 
+                            <local:CustomPicker Image="ic_dropdown" Title="Select Status" ItemsSource="{Binding StatusData}" Style="{StaticResource entry_style}" 
                                                 ItemDisplayBinding="{Binding ActionName}" SelectedItem="{Binding Selectedstatus}">
                             </local:CustomPicker>
                         </Frame>
