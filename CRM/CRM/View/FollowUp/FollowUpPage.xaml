@@ -16,7 +16,7 @@
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="#4c4c4c" />
@@ -36,7 +36,7 @@
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="#4c4c4c" />
@@ -207,27 +207,36 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="1"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="40"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Label Style="{StaticResource lead_name_style}" Text="{Binding Name}" />
+                                    <Label Style="{StaticResource lead_name_style}" Text="{Binding Name}" Grid.ColumnSpan="3"  />
                                     <Label Grid.Row="1" Style="{StaticResource mobile_number_style}" 
-                                       Text="{Binding MobileNumber}" />
+                                       Text="{Binding MobileNumber}"/>
+                                <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource mobile_number_style}" 
+                                       Text="{Binding LeadFollowuptime}" HorizontalOptions="StartAndExpand"/>
+                                <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource mobile_number_style}" 
+                                       Text="{Binding LeadActionDate}" HorizontalOptions="StartAndExpand"/>
+                                <Label Grid.Row="2" Grid.Column="2" Style="{StaticResource mobile_number_style}" 
+                                           Text="{Binding CurrentStatus}" />
 
-                                    <Image Source="ic_call" HeightRequest="30" WidthRequest="30"
-                                       Grid.Column="1" Grid.RowSpan="2" VerticalOptions="CenterAndExpand">
+                                <Image Source="ic_call" HeightRequest="30" WidthRequest="30"
+                                       Grid.Column="3" Grid.RowSpan="2" VerticalOptions="CenterAndExpand">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="PhoneCall_Tapped" 
                                                               CommandParameter="{Binding .}"/>
                                         </Image.GestureRecognizers>
                                     </Image>
 
-                                    <BoxView Color="{StaticResource admin_gray_color}" Grid.Row="2"
-                                         Grid.ColumnSpan="2"/>
+                                    <BoxView Color="{StaticResource admin_gray_color}" Grid.Row="3"
+                                         Grid.ColumnSpan="4"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

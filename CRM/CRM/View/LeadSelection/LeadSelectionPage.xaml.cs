@@ -132,5 +132,9 @@ namespace CRM.View.LeadSelection
             await Clipboard.SetTextAsync(((NewLeadsData)((TappedEventArgs)e).Parameter).MobileNumber);
             UserDialogs.Instance.Toast("Mobile number copied to clipboard.", TimeSpan.FromSeconds(2));
         }
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }

@@ -109,7 +109,7 @@
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />
@@ -195,16 +195,19 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="100"/>
                                 </Grid.ColumnDefinitions>
                                 <Label Style="{StaticResource lead_name_style}" Text="{Binding Name}"/>
                                 <Label Grid.Row="1" Style="{StaticResource mobile_number_style}" Text="{Binding MobileNumber}"/>
-                                <Label Grid.Column="1" Grid.RowSpan="2" Style="{StaticResource lead_name_style}" 
+                                <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource mobile_number_style}" Text="{Binding LeadFollowuptime}"/>
+                                <Label Grid.Row="1" Grid.Column="2" Style="{StaticResource mobile_number_style}" Text="{Binding LeadActionDate}"/>
+                                <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource lead_name_style}" 
                                            Text="{Binding CurrentStatus}" TextColor="{Binding status_text_color}"
                                            HorizontalTextAlignment="End"/>
-                                <CheckBox Color="{StaticResource admin_green_color}" Grid.Column="2" Grid.RowSpan="2"
+                                <CheckBox Color="{StaticResource admin_green_color}" Grid.Column="2" Grid.Row="0"
                                           VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
                                           BindingContext="{Binding .}" CheckedChanged="Calledlist_CheckedChanged"/>
+                                
                                 <BoxView Color="{StaticResource admin_lightgray_color}" Grid.Row="2" Grid.ColumnSpan="3"/>
                             </Grid>
                         </DataTemplate>
@@ -224,7 +227,7 @@
                 <StackLayout BindableLayout.ItemsSource="{Binding Pendinglist}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Grid Padding="15,0" Margin="10,5" ColumnSpacing="10" RowSpacing="0">
+                            <!--<Grid Padding="15,0" Margin="10,5" ColumnSpacing="10" RowSpacing="0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -240,6 +243,30 @@
                                           VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
                                           BindingContext="{Binding .}" CheckedChanged="Pendinglist_CheckedChanged"/>
                                 <BoxView Color="{StaticResource admin_lightgray_color}" Grid.Row="2" Grid.ColumnSpan="2"/>
+                            </Grid>-->
+                            <Grid Padding="15,0" Margin="10,5" ColumnSpacing="10" RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="1"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Style="{StaticResource lead_name_style}" Text="{Binding Name}"/>
+                                <Label Grid.Row="1" Style="{StaticResource mobile_number_style}" Text="{Binding MobileNumber}"/>
+                                <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource mobile_number_style}" Text="{Binding LeadFollowuptime}"/>
+                                <Label Grid.Row="1" Grid.Column="2" Style="{StaticResource mobile_number_style}" Text="{Binding LeadActionDate}"/>
+                                <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource lead_name_style}" 
+                                           Text="{Binding CurrentStatus}" TextColor="{Binding status_text_color}"
+                                           HorizontalTextAlignment="End"/>
+                                <CheckBox Color="{StaticResource admin_green_color}" Grid.Column="2" Grid.Row="0"
+                                          VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                                          BindingContext="{Binding .}" CheckedChanged="Calledlist_CheckedChanged"/>
+
+                                <BoxView Color="{StaticResource admin_lightgray_color}" Grid.Row="2" Grid.ColumnSpan="3"/>
                             </Grid>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>

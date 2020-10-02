@@ -203,14 +203,14 @@
                     <Label Text="EDIT" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
                            Style="{StaticResource green_label}"/>
                 </Frame>
-                <Frame HasShadow="False" CornerRadius="5" Margin="10,0,0,0" Padding="22,0" BorderColor="{StaticResource admin_gray_color}" 
+                <!--<Frame HasShadow="False" CornerRadius="5" Margin="10,0,0,0" Padding="22,0" BorderColor="{StaticResource admin_gray_color}" 
                             HeightRequest="40">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding DeleteUserCommand}"/>
                     </Frame.GestureRecognizers>
                     <Label Text="DELETE" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" 
                            Style="{StaticResource black_label}"/>
-                </Frame>
+                </Frame>-->
                 <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
                     <Label Text="Select All" FontSize="14" TextColor="{StaticResource admin_gray_color}"
                            VerticalTextAlignment="Center"/>

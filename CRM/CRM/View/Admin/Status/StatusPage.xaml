@@ -28,7 +28,7 @@
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{StaticResource admin_gray_color}" />

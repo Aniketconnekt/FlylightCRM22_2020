@@ -373,13 +373,14 @@ namespace CRM.ViewModel
             }
 
         }
-        public void ExecuteOnAddNewLead(object obj)
+        public async void ExecuteOnAddNewLead(object obj)
         {
-            App.MasterDetailPage.Detail = new NavigationPage(new AddLead(null))
-            {
-                BarBackgroundColor = Color.FromHex(App.nav_bar_color),
-                BarTextColor = Color.FromHex(App.nav_bar_text_color)
-            };
+            await _navigation.PushAsync(new AddLead(null));
+            //App.MasterDetailPage.Detail = new NavigationPage(new AddLead(null))
+            //{
+            //    BarBackgroundColor = Color.FromHex(App.nav_bar_color),
+            //    BarTextColor = Color.FromHex(App.nav_bar_text_color)
+            //};
         }
         public async void ExecuteOnTransferLeads(object obj)
         {

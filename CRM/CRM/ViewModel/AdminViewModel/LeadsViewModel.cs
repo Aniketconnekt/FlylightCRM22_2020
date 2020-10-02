@@ -110,11 +110,12 @@ namespace CRM.ViewModel.AdminViewModel
             else if (LeadsDataList.Count() > 1)
                 await ShowAlert("Please select single lead for update.");
             else
-                App.MasterDetailPage.Detail = new NavigationPage(new AddLead(LeadsDataList.FirstOrDefault()))
-                {
-                    BarBackgroundColor = Color.FromHex(App.nav_bar_color),
-                    BarTextColor = Color.FromHex(App.nav_bar_text_color)
-                };
+                await _navigation.PushAsync(new AddLead(LeadsDataList.FirstOrDefault()));
+                //App.MasterDetailPage.Detail = new NavigationPage(new AddLead(LeadsDataList.FirstOrDefault()))
+                //{
+                //    BarBackgroundColor = Color.FromHex(App.nav_bar_color),
+                //    BarTextColor = Color.FromHex(App.nav_bar_text_color)
+                //};
         }
         //public async void ExecuteOnDeleteLead(object obj)
         //{

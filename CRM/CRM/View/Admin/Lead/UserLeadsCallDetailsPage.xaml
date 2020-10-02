@@ -53,7 +53,7 @@
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments ="x:Double" Phone = "16" Tablet = "18" />
+                        <OnIdiom x:TypeArguments ="x:Double" Phone = "14" Tablet = "16" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="#4c4c4c" />
@@ -170,13 +170,13 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="150"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Name}" Style="{StaticResource lead_name_style}"/>
+                                <Label Text="{Binding Name}" Style="{StaticResource lead_name_style}" Grid.ColumnSpan="2"/>
                                 <Label Text="{Binding LeadActionDate}" Style="{StaticResource mobile_number_style}" 
                                        Grid.Row="2" Grid.Column="0"/>
                                 <Label Text="{Binding LeadFollowuptime}" 
                                        Style="{StaticResource mobile_number_style}" Grid.Row="3" Grid.Column="0"
                                        IsVisible="{Binding LeadFollowuptime, Converter={StaticResource TextToBoolConverter}}"/>
-                                <Label Text="{Binding Description}" Style="{StaticResource mobile_number_style}"
+                                <Label Text="{Binding Description}" Grid.ColumnSpan="2" Style="{StaticResource mobile_number_style}"
                                        Grid.Row="1" 
                                        IsVisible="{Binding Description, Converter={StaticResource TextToBoolConverter}}"/>
 
