@@ -219,9 +219,10 @@
                                VerticalTextAlignment="Center"/>
                     </StackLayout>
                 </StackLayout>
-                <syncfusion:SfListView ItemsSource="{Binding Calledlist}" VerticalOptions="StartAndExpand" 
+                <syncfusion:SfListView ItemsSource="{Binding Calledlist}" Style="{StaticResource listview_style}" 
+                                       VerticalOptions="StartAndExpand" 
                                        IsScrollBarVisible="False" SelectionMode="None" AutoFitMode="Height" 
-                                       IsScrollingEnabled="False" LoadMoreOption="{Binding LoadMoreOption}" 
+                                       IsScrollingEnabled="True" LoadMoreOption="{Binding LoadMoreOption}" 
                                        LoadMoreCommand="{Binding LoadMoreItemsCommand}">
                     <syncfusion:SfListView.ItemTemplate>
                         <DataTemplate>
@@ -257,7 +258,7 @@
 
                                     <!--<CheckBox Color="{StaticResource admin_green_color}" Grid.Column="2" Grid.RowSpan="2"
                                           VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>-->
-                                    <BoxView Color="{StaticResource admin_lightgray_color}" Grid.Row="2" Grid.ColumnSpan="2"/>
+                                    <BoxView Color="{StaticResource admin_lightgray_color}" Grid.Row="2" Grid.ColumnSpan="4"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

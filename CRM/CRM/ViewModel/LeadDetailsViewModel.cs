@@ -202,6 +202,7 @@ namespace CRM.ViewModel
         {
             if (Calledlist.Any())
                 await GetLeadsCalledList(Calledlist.LastOrDefault().Id, _userID, _fromDate, _toDate);
+           // LoadMoreOption = LoadMoreOption.Manual;
         }
         public async Task GetLeadsCalledList(int lastrecordsid, int userID, string fromDate, string toDate)
         {
@@ -293,6 +294,7 @@ namespace CRM.ViewModel
                     else
                     {
                         HideLoading();
+                        LoadMoreOption = LoadMoreOption.None;
                         await ShowAlert("Record Not Found");
                     }
                 }
