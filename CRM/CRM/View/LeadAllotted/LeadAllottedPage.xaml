@@ -156,23 +156,23 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="1"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="40"/>
                                 </Grid.ColumnDefinitions>
                                 
-                                <Label Style="{StaticResource lead_name_style}" Text="{Binding Name}" />
-                                <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource mobile_number_style}" 
-                                           Text="{Binding MobileNumber}" />
-                                <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource mobile_number_style}" 
+                                <Label Style="{StaticResource lead_name_style}" Text="{Binding Name}" Grid.ColumnSpan="2"/>
+                                <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource mobile_number_style}" 
                                            Text="{Binding LeadActionDate}" />
-                                <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource mobile_number_style}" 
+                                <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource mobile_number_style}" 
+                                           Text="{Binding MobileNumber}" />
+                                <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource mobile_number_style}" 
                                            Text="{Binding LeadFollowuptime}" />
-                                <Label Grid.Row="1" Grid.Column="2" Style="{StaticResource mobile_number_style}" 
+                                <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource mobile_number_style}" 
                                            Text="{Binding CurrentStatus}" />
 
                                 <Image Source="ic_call" HeightRequest="30" WidthRequest="30"
@@ -183,7 +183,7 @@
                                     </Image.GestureRecognizers>
                                 </Image>
 
-                                <BoxView Color="{StaticResource admin_gray_color}" Grid.Row="2" Grid.ColumnSpan="4"/>
+                                <BoxView Color="{StaticResource admin_gray_color}" Grid.Row="3" Grid.ColumnSpan="4"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
